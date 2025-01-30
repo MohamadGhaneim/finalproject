@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace finalproject
 {
-    public partial class Form1 : Form
+    public partial class CONTROL_PANEL : Form
     {
-        public Form1()
+        public CONTROL_PANEL()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            // this is change 
+            
         }
     }
 }
