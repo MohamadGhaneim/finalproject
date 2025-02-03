@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User_page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_page.Designer.cs">
+      <DependentUpon>User_page.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CONTROL_PANEL.resx">
       <DependentUpon>CONTROL_PANEL.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="User_page.resx">
+      <DependentUpon>User_page.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

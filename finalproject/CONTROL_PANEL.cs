@@ -17,9 +17,20 @@ namespace finalproject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        private void CONTROL_PANEL_Load(object sender, EventArgs e)
         {
-            
+
+        }
+        
+        private void close_click(object sender, EventArgs e)
+        {
+            DialogResult dr = new DialogResult();
+            dr = MessageBox.Show("Are you sure to close", "Warning", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes) { 
+                Close();
+            }
         }
     }
 }
