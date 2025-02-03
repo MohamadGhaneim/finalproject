@@ -16,7 +16,7 @@ namespace finalproject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CONTROL_PANEL());
+            Application.Run(new Login());
         }
     }
 }

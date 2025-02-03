@@ -1,6 +1,6 @@
 ﻿namespace finalproject
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -105,6 +105,7 @@
             this.Btnlogin.TabIndex = 6;
             this.Btnlogin.Text = "Login";
             this.Btnlogin.UseVisualStyleBackColor = false;
+            this.Btnlogin.Click += new System.EventHandler(this.Btnlogin_Click);
             // 
             // Form1
             // 
