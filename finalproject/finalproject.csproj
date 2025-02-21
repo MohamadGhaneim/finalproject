@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADD_CAR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ADD_CAR.Designer.cs">
+      <DependentUpon>ADD_CAR.cs</DependentUpon>
+    </Compile>
     <Compile Include="CONTROL_PANEL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,10 @@
     <Compile Include="User_page.Designer.cs">
       <DependentUpon>User_page.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="ADD_CAR.resx">
+      <DependentUpon>ADD_CAR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CONTROL_PANEL.resx">
       <DependentUpon>CONTROL_PANEL.cs</DependentUpon>
     </EmbeddedResource>

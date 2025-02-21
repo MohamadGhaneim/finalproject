@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CONTROL_PANEL));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btn_logout = new System.Windows.Forms.PictureBox();
             this.btn_userpage = new System.Windows.Forms.Button();
             this.btn_sale = new System.Windows.Forms.Button();
             this.btn_addcar = new System.Windows.Forms.Button();
@@ -38,24 +38,22 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.main_panel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.add_CAR1 = new finalproject.ADD_CAR();
             this.user_page1 = new finalproject.User_page();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.main_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.btn_logout);
             this.panel2.Controls.Add(this.btn_userpage);
             this.panel2.Controls.Add(this.btn_sale);
             this.panel2.Controls.Add(this.btn_addcar);
@@ -67,15 +65,16 @@
             this.panel2.Size = new System.Drawing.Size(163, 511);
             this.panel2.TabIndex = 3;
             // 
-            // pictureBox2
+            // btn_logout
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(45, 431);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(56, 53);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.btn_logout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_logout.BackgroundImage")));
+            this.btn_logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_logout.Location = new System.Drawing.Point(44, 413);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(56, 53);
+            this.btn_logout.TabIndex = 5;
+            this.btn_logout.TabStop = false;
+            this.btn_logout.Click += new System.EventHandler(this.logout);
             // 
             // btn_userpage
             // 
@@ -92,6 +91,7 @@
             this.btn_userpage.TabIndex = 4;
             this.btn_userpage.Text = "User page";
             this.btn_userpage.UseVisualStyleBackColor = false;
+            this.btn_userpage.Click += new System.EventHandler(this.USERS);
             // 
             // btn_sale
             // 
@@ -124,6 +124,7 @@
             this.btn_addcar.TabIndex = 2;
             this.btn_addcar.Text = "Add car";
             this.btn_addcar.UseVisualStyleBackColor = false;
+            this.btn_addcar.Click += new System.EventHandler(this.Add_Car);
             // 
             // lbl_AdminName
             // 
@@ -131,9 +132,8 @@
             this.lbl_AdminName.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_AdminName.Location = new System.Drawing.Point(3, 126);
             this.lbl_AdminName.Name = "lbl_AdminName";
-            this.lbl_AdminName.Size = new System.Drawing.Size(76, 17);
+            this.lbl_AdminName.Size = new System.Drawing.Size(0, 17);
             this.lbl_AdminName.TabIndex = 1;
-            this.lbl_AdminName.Text = "welcome  ";
             // 
             // pictureBox1
             // 
@@ -164,58 +164,44 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btn_close);
-            this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(163, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(883, 36);
             this.panel1.TabIndex = 7;
             // 
-            // menuStrip1
+            // main_panel
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(883, 24);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            this.main_panel.Controls.Add(this.add_CAR1);
+            this.main_panel.Controls.Add(this.user_page1);
+            this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_panel.Location = new System.Drawing.Point(163, 36);
+            this.main_panel.Name = "main_panel";
+            this.main_panel.Size = new System.Drawing.Size(883, 475);
+            this.main_panel.TabIndex = 8;
             // 
-            // MenuItem
+            // label2
             // 
-            this.MenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem,
-            this.importToolStripMenuItem});
-            this.MenuItem.Name = "MenuItem";
-            this.MenuItem.Size = new System.Drawing.Size(37, 20);
-            this.MenuItem.Text = "File";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(40, 478);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 24);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Logout";
             // 
-            // exportToolStripMenuItem
+            // add_CAR1
             // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.user_page1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(163, 36);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(883, 475);
-            this.panel3.TabIndex = 8;
+            this.add_CAR1.Location = new System.Drawing.Point(0, 0);
+            this.add_CAR1.Name = "add_CAR1";
+            this.add_CAR1.Size = new System.Drawing.Size(883, 475);
+            this.add_CAR1.TabIndex = 1;
             // 
             // user_page1
             // 
             this.user_page1.Location = new System.Drawing.Point(0, 0);
             this.user_page1.Name = "user_page1";
-            this.user_page1.Size = new System.Drawing.Size(883, 475);
+            this.user_page1.Size = new System.Drawing.Size(883, 456);
             this.user_page1.TabIndex = 0;
             // 
             // CONTROL_PANEL
@@ -223,24 +209,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 511);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.main_panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "CONTROL_PANEL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CONTROL_PANEL";
             this.Load += new System.EventHandler(this.CONTROL_PANEL_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.main_panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -254,12 +236,10 @@
         private System.Windows.Forms.Button btn_userpage;
         private System.Windows.Forms.Button btn_sale;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.Panel main_panel;
+        private System.Windows.Forms.PictureBox btn_logout;
         private User_page user_page1;
+        private System.Windows.Forms.Label label2;
+        private ADD_CAR add_CAR1;
     }
 }

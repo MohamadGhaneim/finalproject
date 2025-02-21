@@ -44,6 +44,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_select = new System.Windows.Forms.Button();
+            this.btn_update = new System.Windows.Forms.Button();
+            this.txt_ID = new System.Windows.Forms.TextBox();
+            this.lbl_id = new System.Windows.Forms.Label();
+            this.btn_reset = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_user)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,20 +68,24 @@
             this.btn_adduser.TabIndex = 21;
             this.btn_adduser.Text = "Add user";
             this.btn_adduser.UseVisualStyleBackColor = false;
+            this.btn_adduser.Click += new System.EventHandler(this.insert_user);
             // 
             // dgv_user
             // 
             this.dgv_user.AllowUserToAddRows = false;
             this.dgv_user.AllowUserToDeleteRows = false;
+            this.dgv_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_user.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_user.Location = new System.Drawing.Point(290, 79);
             this.dgv_user.Name = "dgv_user";
             this.dgv_user.ReadOnly = true;
-            this.dgv_user.Size = new System.Drawing.Size(574, 321);
+            this.dgv_user.Size = new System.Drawing.Size(574, 291);
             this.dgv_user.TabIndex = 30;
+            this.dgv_user.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_user_CellClick);
             // 
             // cb_rank
             // 
+            this.cb_rank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_rank.FormattingEnabled = true;
             this.cb_rank.Location = new System.Drawing.Point(133, 183);
@@ -201,10 +211,103 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "full name";
             // 
+            // btn_select
+            // 
+            this.btn_select.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_select.FlatAppearance.BorderSize = 0;
+            this.btn_select.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.btn_select.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btn_select.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_select.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_select.ForeColor = System.Drawing.Color.White;
+            this.btn_select.Location = new System.Drawing.Point(579, 32);
+            this.btn_select.Name = "btn_select";
+            this.btn_select.Size = new System.Drawing.Size(81, 32);
+            this.btn_select.TabIndex = 31;
+            this.btn_select.Text = "search";
+            this.btn_select.UseVisualStyleBackColor = false;
+            this.btn_select.Click += new System.EventHandler(this.select_user);
+            // 
+            // btn_update
+            // 
+            this.btn_update.BackColor = System.Drawing.Color.Green;
+            this.btn_update.FlatAppearance.BorderSize = 0;
+            this.btn_update.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_update.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btn_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.ForeColor = System.Drawing.Color.White;
+            this.btn_update.Location = new System.Drawing.Point(290, 389);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(133, 56);
+            this.btn_update.TabIndex = 32;
+            this.btn_update.Text = "update info";
+            this.btn_update.UseVisualStyleBackColor = false;
+            this.btn_update.Click += new System.EventHandler(this.update_user);
+            // 
+            // txt_ID
+            // 
+            this.txt_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_ID.Location = new System.Drawing.Point(356, 33);
+            this.txt_ID.Name = "txt_ID";
+            this.txt_ID.Size = new System.Drawing.Size(202, 29);
+            this.txt_ID.TabIndex = 34;
+            this.txt_ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.check_int_id);
+            // 
+            // lbl_id
+            // 
+            this.lbl_id.AutoSize = true;
+            this.lbl_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_id.Location = new System.Drawing.Point(306, 33);
+            this.lbl_id.Name = "lbl_id";
+            this.lbl_id.Size = new System.Drawing.Size(27, 24);
+            this.lbl_id.TabIndex = 33;
+            this.lbl_id.Text = "ID";
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.BackColor = System.Drawing.Color.Green;
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btn_reset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Location = new System.Drawing.Point(449, 389);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(133, 56);
+            this.btn_reset.TabIndex = 35;
+            this.btn_reset.Text = "reset";
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.reset_txt);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.Red;
+            this.btn_delete.FlatAppearance.BorderSize = 0;
+            this.btn_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.Color.Black;
+            this.btn_delete.Location = new System.Drawing.Point(682, 389);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(133, 56);
+            this.btn_delete.TabIndex = 36;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.delete_user);
+            // 
             // User_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_reset);
+            this.Controls.Add(this.txt_ID);
+            this.Controls.Add(this.lbl_id);
+            this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.btn_select);
             this.Controls.Add(this.btn_adduser);
             this.Controls.Add(this.dgv_user);
             this.Controls.Add(this.cb_rank);
@@ -223,6 +326,7 @@
             this.Controls.Add(this.label1);
             this.Name = "User_page";
             this.Size = new System.Drawing.Size(883, 475);
+            this.Load += new System.EventHandler(this.select_all_users);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_user)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -247,5 +351,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_select;
+        private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.TextBox txt_ID;
+        private System.Windows.Forms.Label lbl_id;
+        private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.Button btn_delete;
     }
 }
