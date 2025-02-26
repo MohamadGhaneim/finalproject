@@ -80,5 +80,22 @@ namespace finalproject
                 MessageBox.Show("Error: Cannot find the main form.");
             }
         }
+
+        private void btn_sale_Click(object sender, EventArgs e)
+        {
+            if (this.FindForm() is CONTROL_PANEL mainForm)
+            {
+                mainForm.LoadUserControl(new Sale_page()); // Ensure ADD_CAR is a UserControl
+            }
+            else
+            {
+                MessageBox.Show("Error: Cannot find the main form.");
+            }
+        }
+
+        private void main_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

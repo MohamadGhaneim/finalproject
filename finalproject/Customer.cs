@@ -7,8 +7,7 @@ namespace finalproject
 {
     internal class Customer
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-DPM0T5TG\SQLEXPRESS;Initial Catalog=CAR_SALES;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
-
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-E1H7K4F\SQLEXPRESS;Initial Catalog=CAR_SALES;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
         private int customerid { get; set; }
         private string customername { get; set; }
         private string customeremail { get; set; }
@@ -24,7 +23,7 @@ namespace finalproject
 
         public int add_customer(string name, string email, string phone)
         {
-            int customerid = -1;
+           
 
             try
             {
@@ -46,13 +45,14 @@ namespace finalproject
                 }
                 else
                 {
-                    string query = "INSERT INTO Customers(cust_name, cust_phone, cust_email) OUTPUT INSERTED.custID VALUES(@name, @phone, @email)";
+                    string query = "INSERT INTO Customers(cust_name, cust_phone, cust_email)" +
+                        " VALUES(@name, @phone, @email); SELECT SCOPE_IDENTITY();";
                     SqlCommand cmd = new SqlCommand(query, conn);
 
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@email", email);
-
+                    
                     object result = cmd.ExecuteScalar();
 
                     if (result != null)
@@ -72,6 +72,7 @@ namespace finalproject
             finally
             {
                 conn.Close();
+           
             }
 
             return customerid;

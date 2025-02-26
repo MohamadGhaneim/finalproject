@@ -26,11 +26,18 @@ namespace finalproject
                 int carid = int.Parse(TBcarid.Text);
                 int finallprice = int.Parse(TBfinallprice.Text);
 
-                Customer_info customer = this.Parent.Controls.OfType<Customer_info>().FirstOrDefault();
-                if (customer != null)
+                Customer_info customer = new Customer_info();
+                this.Parent.Controls.Add(customer);
+                Customer_info cust = this.Parent.Controls.OfType<Customer_info>().FirstOrDefault();
+                
+                if (cust != null)
                 {
                     customer.SetCarInfo(carid, finallprice);
                     customer.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("null");
                 }
             }
             else
@@ -69,7 +76,8 @@ namespace finalproject
                 TBcarid.Text = row.Cells[0].Value.ToString();
                 TBcarmodel.Text = row.Cells[1].Value.ToString();
                 TBcarprice.Text=row.Cells[3].Value.ToString();
-                //PBcarpicture.
+                String path = row.Cells[5].Value.ToString();
+                PBcarpicture.Image = Image.FromFile(path);
             }
         }
     }

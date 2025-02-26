@@ -12,8 +12,7 @@ namespace finalproject
 {
     internal class Sales
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-DPM0T5TG\SQLEXPRESS;Initial Catalog=CAR_SALES;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
-
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-E1H7K4F\SQLEXPRESS;Initial Catalog=CAR_SALES;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
         private int saleid {  get; set; }
         private DateTime saledate { get; set; }
         private string saleprice {  get; set; }
@@ -23,14 +22,14 @@ namespace finalproject
 
         public int add_Sale(DateTime saledate, string saleprice, int empid, int custid, int carid)
         {
-            int saleid = -1;
+           
             if (conn.State != ConnectionState.Open)
             {
                 try
                 {
                     conn.Open();
                     string query = "INSERT INTO Sales(SALE_DATE,SALE_PRICE,EMP_ID,CUST_ID,CAR_ID)" +
-                        " OUTPUT INSERTED.SALE_ID VALUES(@saledate,@saleprice,@empid,@custid,@carid)";
+                        " VALUES(@saledate,@saleprice,@empid,@custid,@carid); SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("saledate", saledate);
@@ -43,7 +42,6 @@ namespace finalproject
                     {
                         saleid = Convert.ToInt32(result);
                         MessageBox.Show("Sale success");
-
                     }
                     else
                     {
@@ -79,7 +77,7 @@ namespace finalproject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("error");
+                    MessageBox.Show(ex.Message);
                 }
                 finally
                 {

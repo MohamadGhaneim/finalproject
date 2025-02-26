@@ -65,25 +65,33 @@ namespace finalproject
                         if (dt.Rows.Count > 0)
                         {
                             string columnValue = (string)dt.Rows[0]["EMP_rank"];
+                            int emp_id = (int)dt.Rows[0]["empID"];
+
                             if (columnValue == "admin")
-                            { 
+                            {
+                                MessageBox.Show(emp_id.ToString());
                                 string Name_admin = (string)dt.Rows[0]["EMP_NAME"];
                                 CONTROL_PANEL cONTROL_PANEL=new CONTROL_PANEL(Name_admin);
-
+                                Customer_info customer = new Customer_info(emp_id);
                                 currentForm.Hide();
                                 cONTROL_PANEL.Show();
+                                return;
+                            }
+                             if (columnValue == "employee")
+                            {
                                 
+                                EMPLOYEE_CONTROL ec = new EMPLOYEE_CONTROL();
+                                Customer_info customer = new Customer_info(emp_id);
+                                currentForm.Hide();
+                                ec.Show();
+                                return;
                             }
-                            else if (columnValue == "employee")
-                            {
-                                MessageBox.Show("hello emp");
-                            }
-                            else
-                            {
-                                MessageBox.Show("errorrrrrrr");
-                            }
+                           
                         }
-
+                        else
+                        {
+                            MessageBox.Show("user not found !");
+                        }
                     }
 
                 }

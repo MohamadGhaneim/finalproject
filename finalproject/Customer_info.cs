@@ -15,9 +15,14 @@ namespace finalproject
 {
     public partial class Customer_info : UserControl
     {
-        int carid, finalprice;
+        int carid, finalprice , _EMP_ID=1;
         public Customer_info()
         {
+            InitializeComponent();
+        }
+        public Customer_info(int id)
+        {
+            _EMP_ID = id;
             InitializeComponent();
         }
         public Customer_info(int carid,int finalprice)
@@ -46,9 +51,9 @@ namespace finalproject
 
         private void btn_next2_Click(object sender, EventArgs e)
         {
-            String name=tbcustomername.Text;
-            String email=tbcustomeremail.Text;
-            String phone=tbcustomerphone.Text;
+            String name=tbcustomername.Text.ToString();
+            String email=tbcustomeremail.Text.ToString();
+            String phone=tbcustomerphone.Text.ToString();
 
             if(name!="" && email !="" && phone != "")
             {
@@ -58,12 +63,13 @@ namespace finalproject
                 {
                     Customer customer = new Customer();
                     int customerid=customer.add_customer(name, email, phone);
+
                     Sales sales = new Sales();
                     DateTime dateTime=DateTime.Now;
-                    int saleid=sales.add_Sale(dateTime, finalprice.ToString(), 3,customerid, carid);
+                    int saleid=sales.add_Sale(dateTime, finalprice.ToString(), _EMP_ID, customerid, carid);
                     DataTable dt = sales.getsaledata(saleid);
                     dataGridView2.DataSource = dt;
-                    //ExportToExcel(dataGridView2);
+                    ExportToExcel(dataGridView2);
                     GenerateInvoice(saleid);
                 }
                 else
@@ -104,7 +110,7 @@ namespace finalproject
                 app.Visible = true;
                 worksheet = workbook.Sheets["Sheet1"];
                 worksheet = workbook.ActiveSheet;
-                worksheet.Name = "Exported from Messages app";
+                worksheet.Name = "Exported from cars app";
 
                 for (int i = 1; i < dgv.Columns.Count + 1; i++)
                 {
@@ -124,6 +130,11 @@ namespace finalproject
             }
         }
 
+        private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
+        {
+
+        }
+
         public void GenerateInvoice(int saleId)
         {
             Sales sales = new Sales();
@@ -135,9 +146,8 @@ namespace finalproject
                 return;
             }
 
-            // Set file path
             string filePath = $"C:\\Invoices\\Invoice_{saleId}.pdf";
-            Directory.CreateDirectory("C:\\Invoices"); // Ensure directory exists
+            Directory.CreateDirectory("C:\\Invoices"); 
 
             using (FileStream stream = new FileStream(filePath, FileMode.Create))
             {
@@ -145,13 +155,13 @@ namespace finalproject
                 PdfWriter.GetInstance(doc, stream);
                 doc.Open();
 
-                // Invoice Title
+                
                 iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18);
                 Paragraph title = new Paragraph("Invoice", titleFont) { Alignment = Element.ALIGN_CENTER };
                 doc.Add(title);
                 doc.Add(new Paragraph("\n"));
 
-                // Invoice Details
+                
                 iTextSharp.text.Font bodyFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
                 DataRow row = dt.Rows[0];
                 doc.Add(new Paragraph($"Invoice ID: {row["SALE_ID"]}", bodyFont));
@@ -166,7 +176,7 @@ namespace finalproject
             }
 
             MessageBox.Show("Invoice generated successfully! File saved at: " + filePath);
-            System.Diagnostics.Process.Start(filePath); // Open the PDF
+            System.Diagnostics.Process.Start(filePath); 
         }
     }
 }

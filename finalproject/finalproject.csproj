@@ -77,6 +77,7 @@
     <Compile Include="ADD_CAR.Designer.cs">
       <DependentUpon>ADD_CAR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cars.cs" />
     <Compile Include="CONTROL_PANEL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +92,12 @@
       <DependentUpon>Customer_info.cs</DependentUpon>
     </Compile>
     <Compile Include="EMPLOYEE.cs" />
+    <Compile Include="EMPLOYEE_CONTROL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EMPLOYEE_CONTROL.Designer.cs">
+      <DependentUpon>EMPLOYEE_CONTROL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_info.resx">
       <DependentUpon>Customer_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EMPLOYEE_CONTROL.resx">
+      <DependentUpon>EMPLOYEE_CONTROL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CONTROL_PANEL));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.PictureBox();
             this.btn_userpage = new System.Windows.Forms.Button();
             this.btn_sale = new System.Windows.Forms.Button();
@@ -39,9 +40,11 @@
             this.btn_close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.main_panel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.add_CAR1 = new finalproject.ADD_CAR();
-            this.user_page1 = new finalproject.User_page();
+            this.customer_info2 = new finalproject.Customer_info();
+            this.customer_info1 = new finalproject.Customer_info();
+            this.sale_page1 = new finalproject.Sale_page();
+            this.adD_CAR2 = new finalproject.ADD_CAR();
+            this.user_page2 = new finalproject.User_page();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +67,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(163, 511);
             this.panel2.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(40, 478);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 24);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Logout";
             // 
             // btn_logout
             // 
@@ -108,6 +121,7 @@
             this.btn_sale.TabIndex = 3;
             this.btn_sale.Text = "Sale page";
             this.btn_sale.UseVisualStyleBackColor = false;
+            this.btn_sale.Click += new System.EventHandler(this.btn_sale_Click);
             // 
             // btn_addcar
             // 
@@ -172,37 +186,52 @@
             // 
             // main_panel
             // 
-            this.main_panel.Controls.Add(this.add_CAR1);
-            this.main_panel.Controls.Add(this.user_page1);
+            this.main_panel.Controls.Add(this.customer_info2);
+            this.main_panel.Controls.Add(this.customer_info1);
+            this.main_panel.Controls.Add(this.sale_page1);
+            this.main_panel.Controls.Add(this.adD_CAR2);
+            this.main_panel.Controls.Add(this.user_page2);
             this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.main_panel.Location = new System.Drawing.Point(163, 36);
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(883, 475);
             this.main_panel.TabIndex = 8;
+            this.main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.main_panel_Paint);
             // 
-            // label2
+            // customer_info2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 478);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 24);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Logout";
+            this.customer_info2.Location = new System.Drawing.Point(0, 0);
+            this.customer_info2.Name = "customer_info2";
+            this.customer_info2.Size = new System.Drawing.Size(883, 475);
+            this.customer_info2.TabIndex = 4;
             // 
-            // add_CAR1
+            // customer_info1
             // 
-            this.add_CAR1.Location = new System.Drawing.Point(0, 0);
-            this.add_CAR1.Name = "add_CAR1";
-            this.add_CAR1.Size = new System.Drawing.Size(883, 475);
-            this.add_CAR1.TabIndex = 1;
+            this.customer_info1.Location = new System.Drawing.Point(0, 0);
+            this.customer_info1.Name = "customer_info1";
+            this.customer_info1.Size = new System.Drawing.Size(883, 475);
+            this.customer_info1.TabIndex = 3;
             // 
-            // user_page1
+            // sale_page1
             // 
-            this.user_page1.Location = new System.Drawing.Point(0, 0);
-            this.user_page1.Name = "user_page1";
-            this.user_page1.Size = new System.Drawing.Size(883, 456);
-            this.user_page1.TabIndex = 0;
+            this.sale_page1.Location = new System.Drawing.Point(0, 0);
+            this.sale_page1.Name = "sale_page1";
+            this.sale_page1.Size = new System.Drawing.Size(883, 475);
+            this.sale_page1.TabIndex = 2;
+            // 
+            // adD_CAR2
+            // 
+            this.adD_CAR2.Location = new System.Drawing.Point(0, 0);
+            this.adD_CAR2.Name = "adD_CAR2";
+            this.adD_CAR2.Size = new System.Drawing.Size(883, 475);
+            this.adD_CAR2.TabIndex = 1;
+            // 
+            // user_page2
+            // 
+            this.user_page2.Location = new System.Drawing.Point(0, 0);
+            this.user_page2.Name = "user_page2";
+            this.user_page2.Size = new System.Drawing.Size(883, 475);
+            this.user_page2.TabIndex = 0;
             // 
             // CONTROL_PANEL
             // 
@@ -241,5 +270,10 @@
         private User_page user_page1;
         private System.Windows.Forms.Label label2;
         private ADD_CAR add_CAR1;
+        private ADD_CAR adD_CAR2;
+        private User_page user_page2;
+        private Sale_page sale_page1;
+        private Customer_info customer_info1;
+        private Customer_info customer_info2;
     }
 }

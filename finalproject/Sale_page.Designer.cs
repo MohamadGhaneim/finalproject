@@ -100,9 +100,9 @@
             // PBcarpicture
             // 
             this.PBcarpicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PBcarpicture.Location = new System.Drawing.Point(188, 304);
+            this.PBcarpicture.Location = new System.Drawing.Point(167, 304);
             this.PBcarpicture.Name = "PBcarpicture";
-            this.PBcarpicture.Size = new System.Drawing.Size(163, 168);
+            this.PBcarpicture.Size = new System.Drawing.Size(184, 168);
             this.PBcarpicture.TabIndex = 5;
             this.PBcarpicture.TabStop = false;
             // 

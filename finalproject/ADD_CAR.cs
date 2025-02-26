@@ -26,8 +26,20 @@ namespace finalproject
             {
                 // Display the selected image in the PictureBox
                 picture_bx.Image = Image.FromFile(openPicture.FileName);
+            }
+        }
 
-
+        private void insert_car(object sender, EventArgs e)
+        {
+            if(txtprice.Text.ToString().Trim()=="" || cbtypeCar.Text.ToString().Trim() == "")
+            {
+                MessageBox.Show("all fields are required");
+            }
+            else
+            {
+                Cars c = new Cars();
+                String imagePath = openPicture.FileName;
+                c.InsertCar(txtprice.Text.ToString(), cbtypeCar.Text.ToString(), txt_color.Text.ToString(), dt_date.Text.ToString() , imagePath);
             }
         }
     }
